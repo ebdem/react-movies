@@ -35,32 +35,109 @@ class App extends React.Component {
                 "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/4hne3v6jN4MlCnhSkxOW7YspJhr.jpg",
                 "overview": " t, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
                 "id": 13
-              }
-        ]
+              }, {
+                "id": 4,
+                "name": "Rogue",
+                "rating": 7.4,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/uOw5JD8IlD546feZ6oxbIjvN66P.jpg"
+            },
+
+            {
+                "id": 5,
+                "name": "Project Power",
+                "rating": 6.7,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/TnOeov4w0sTtV2gqICqIxVi74V.jpg"
+            },
+
+            {
+                "id": 6,
+                "name": "Superman",
+                "rating": 7.6,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/6Bbq8qQWpoApLZYWFFAuZ1r2gFw.jpg"
+            },
+            {
+                "id": 23,
+                "name": "The Flash",
+                "rating": 8.3,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"
+            },
+
+            {
+                "id": 21,
+                "name": "Interstellar",
+                "rating": 6.8,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+            },
+
+            {
+                "id": 22,
+                "name": "Arrow",
+                "rating": 7.9,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
+            },
+
+            {
+                "id": 25,
+                "name": "Interstellar",
+                "rating": 6.8,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
+            },
+
+            {
+                "id": 26,
+                "name": "Arrow",
+                "rating": 7.9,
+                "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+                "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
+            }
+        ],
+        search:''
     }
 
     deleteMovie = (movie) => {
         const newMovieList = this.state.movies.filter(
             m => m.id !== movie.id
         );
-
-        this.setState({
+        //eğer herhangi bir state nesnemiz olmasaydı bunu kullanabilirdik
+        // this.setState({
+        //     movies:newMovieList
+        // })
+        
+            //state nesnemiz olduğu için bunu kullanıyoruzzzzz güncelleme yapıyoruz
+        this.setState(state => ({
             movies:newMovieList
-        })
+        }))
+    }
+
+    searchMovie = (event) => {
+        this.setState({search:event.target.value})
     }
 
     render(){
+
+        let filteredMovies = this.state.movies.filter(
+            (movie) => {
+                return movie.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+            }
+        )
         return(
             <div className='container'>
 
                 <div className='row'>
                     <div className='col-lg-12'>
-                        <SearchBar/>
+                        <SearchBar searchMovieProp={this.searchMovie}/>
                     </div>
                     
                 </div>
                 <MovieList 
-                movies={this.state.movies}
+                movies={filteredMovies}
                 deleteMovieProps= {this.deleteMovie}
                 
                 />
