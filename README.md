@@ -62,3 +62,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 const newMovie = serialize(e.target, {hash:true})
 
 kullanımı bu şekildedir ve girilen key valuelarını objeye çevirir
+
+
+## Sorting by id greater
+
+sort((a, b) => {
+        return a.id < b.id ? 1 : a.id > b.id ? -1 : 0
+    })

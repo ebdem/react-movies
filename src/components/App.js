@@ -49,11 +49,17 @@ class App extends React.Component {
   }
 
   render() {
-    let filteredMovies = this.state.movies.filter((movie) => {
+    let filteredMovies = this.state.movies.filter(
+        (movie) => {
       return (
         movie.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
       );
+    }).sort((a, b) => {
+        return a.id < b.id ? 1 : a.id > b.id ? -1 : 0
     });
+
+
+
     return (
       <Router>
         <div className="container">
