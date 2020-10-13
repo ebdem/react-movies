@@ -26,14 +26,16 @@ import React from 'react'
                         <label htmlFor="inputName">Name</label>
                         <input  type="text" 
                                 className="form-control" 
-                                name="name"/>
+                                name="name"
+                                required/>
                     </div>
                     <div className="form-group col-md-2">
                         <label htmlFor="inputRating">Rating</label>
                         <input 
                                 type="text" 
                                 className="form-control" 
-                                name="rating"/>
+                                name="rating"
+                                required/>
                     </div>
                 </div>
                 <div className="form-row">
@@ -42,7 +44,8 @@ import React from 'react'
                         <input 
                                 type="text" 
                                 className="form-control" 
-                                name="imageURL"/>
+                                name="imageURL"
+                                required/>
                     </div>
                 </div>
                 <div className="form-row">

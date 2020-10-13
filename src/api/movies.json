@@ -48,6 +48,13 @@
       "rating": 7.6,
       "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
       "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/6Bbq8qQWpoApLZYWFFAuZ1r2gFw.jpg"
+    },
+    {
+      "name": "Prestij",
+      "rating": "8.9",
+      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/29bgk0clNyU7xS6DkcgVFYos7yG.jpg",
+      "overview": "19. yy sonlarında Londra’da Robert Angier, sevgili eşi Julia McCullough ve Alfred Borden hem arkadaştırlar hem de bir sihirbazın asistanlarıdırlar.",
+      "id": 14
     }
   ]
 }

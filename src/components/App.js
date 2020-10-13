@@ -23,6 +23,7 @@ class App extends React.Component {
   }
 
   //AXIOS API
+  //Delete Movie
   deleteMovie = async (movie) => {
     axios.delete(`http://localhost:3002/movies/${movie.id}`);
 
@@ -33,9 +34,19 @@ class App extends React.Component {
     }));
   };
 
+  //sEarch Movie
   searchMovie = (event) => {
     this.setState({ search: event.target.value });
   };
+
+
+  //ADD Movie 
+  addMovie= async (movie) => {
+      await axios.post(`http://localhost:3002/movies/`,movie)
+      this.setState(state => ({
+          movies:state.movies.concat([movie])
+      })) 
+  }
 
   render() {
     let filteredMovies = this.state.movies.filter((movie) => {
@@ -65,8 +76,12 @@ class App extends React.Component {
           
 
 
-        <Route path='/add' render={() => (
-            <AddMovie/>
+        <Route path='/add' render={({history}) => (
+            <AddMovie
+                onAddMovie = {(movie) => {this.addMovie(movie)
+                    history.push('/')
+                }}
+            />
 
         )}> 
 
