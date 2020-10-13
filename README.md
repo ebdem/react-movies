@@ -14,18 +14,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
      deleteMovie = async (movie) => {
          const baseURL = `http://localhost:3002/movies/${movie.id}`;
          await fetch(baseURL, {
-             //fetch de method kullanmamız gerekmez ise default olarak GET methodu olur
+             fetch de method kullanmamız gerekmez ise default olarak GET methodu olur
              method:'DELETE'
          })
          const newMovieList = this.state.movies.filter(
              m => m.id !== movie.id
          );
-         //eğer herhangi bir state nesnemiz olmasaydı bunu kullanabilirdik
-         // this.setState({
-         //     movies:newMovieList
-         // })
+         eğer herhangi bir state nesnemiz olmasaydı bunu kullanabilirdik
+          this.setState({
+              movies:newMovieList
+          })
       
-         //state nesnemiz olduğu için bunu kullanıyoruzzzzz güncelleme yapıyoruz
+         state nesnemiz olduğu için bunu kullanıyoruzzzzz güncelleme yapıyoruz
          this.setState(state => ({
              movies:newMovieList
          }))
@@ -36,12 +36,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
          const newMovieList = this.state.movies.filter(
              m => m.id !== movie.id
          );
-         //eğer herhangi bir state nesnemiz olmasaydı bunu kullanabilirdik
-         // this.setState({
-         //     movies:newMovieList
-         // })
+        eğer herhangi bir state nesnemiz olmasaydı bunu kullanabilirdik
+         this.setState({
+             movies:newMovieList
+         })
   
-             //state nesnemiz olduğu için bunu kullanıyoruzzzzz güncelleme yapıyoruz
+             state nesnemiz olduğu için bunu kullanıyoruzzzzz güncelleme yapıyoruz
          this.setState(state => ({
              movies:newMovieList
          }))
@@ -49,11 +49,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ## fetch url acces
- // async componentDidMount(){
-    //     const baseURL = 'http://localhost:3002/movies';
-    //     const response =await fetch(baseURL);
-    //     console.log(response);
-    //     const data =await response.json()
-    //     console.log(data)
-    //     this.setState({movies:data})
-    // }
+  async componentDidMount(){
+         const baseURL = 'http://localhost:3002/movies';
+         const response =await fetch(baseURL);
+         console.log(response);
+         const data =await response.json()
+         console.log(data)
+         this.setState({movies:data})
+     }
+
+## serialize 
+const newMovie = serialize(e.target, {hash:true})
+
+kullanımı bu şekildedir ve girilen key valuelarını objeye çevirir

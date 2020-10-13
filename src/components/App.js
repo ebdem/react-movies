@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import AddMovie from "./AddMovie";
 import axios from "axios";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -65,7 +65,12 @@ class App extends React.Component {
           
 
 
-        <Route path='/add' component={AddMovie} />  
+        <Route path='/add' render={() => (
+            <AddMovie/>
+
+        )}> 
+
+        </Route> 
             </Switch>
           
         </div>

@@ -1,7 +1,15 @@
+import serialize from 'form-serialize';
 import React from 'react'
 
  class AddMovie extends React.Component {
 
+    handleformSubmit = (e) => {
+        e.preventDefault();
+        //girilen bilgiler serialize sayesinde objeye dönüştürülüyor
+        const newMovie = serialize(e.target, {hash:true});
+        this.props.onAddMovie(newMovie)
+        console.log(newMovie)
+    }
    
 
 
@@ -11,7 +19,7 @@ import React from 'react'
 
         return (
             <div className="container">
-            <form className="mt-5">
+            <form className="mt-5" onSubmit={this.handleformSubmit}>
             <input className="form-control" id="disabledInput" type="text" placeholder="Fill The Form To Add A Movie.." disabled/>
                 <div className="form-row">
                     <div className="form-group col-md-10">
