@@ -69,3 +69,10 @@ kullanımı bu şekildedir ve girilen key valuelarını objeye çevirir
 sort((a, b) => {
         return a.id < b.id ? 1 : a.id > b.id ? -1 : 0
     })
+
+## Truncate func
+const truncateOwerview = (string, maxLength) =>{
+      if(!string) return null;
+      if(string.length <= maxLength) return string;
+      return `${string.substring(0,maxLength)} ...`
+    }
