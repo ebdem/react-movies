@@ -76,3 +76,21 @@ const truncateOwerview = (string, maxLength) =>{
       if(string.length <= maxLength) return string;
       return `${string.substring(0,maxLength)} ...`
     }
+
+## Edit Screen 
+async componentDidMount() {
+        const id = this.props.match.params.id
+        
+        //console.log(id)
+        const response = await axios.get(`http://localhost:3002/movies/${id}`);
+        //console.log(response.data)
+
+        const movie = response.data;
+
+        this.setState({
+            name:movie.name,
+            rating:movie.rating,
+            imageURL:movie.imageURL,
+            overwiev:movie.overview
+        })
+    }
