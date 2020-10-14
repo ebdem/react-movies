@@ -6,7 +6,7 @@ import axios from 'axios';
     state = {
         name:"",
         rating:"",  
-        overwiev:"",
+        overview:"",
         imageURL:""
     }
 
@@ -23,12 +23,37 @@ import axios from 'axios';
             name:movie.name,
             rating:movie.rating,
             imageURL:movie.imageURL,
-            overwiev:movie.overview
+            overview:movie.overview
         })
+    }
+
+    onInputChange = (e) => {
+        //console.log(e.target.name)
+        //console.log(e.target.value)
+
+        this.setState({
+            [e.target.name] : e.target.value
+        })
+
     }
 
     handleformSubmit = (e) => {
         e.preventDefault();
+
+        const {name, rating, overview, imageURL} = this.state;
+
+        const id = this.props.match.params.id;
+
+        const updatedMovie = {
+            name,
+            rating,
+            overview,
+            imageURL
+
+        }
+
+        this.props.onEditMovie(id, updatedMovie);
+        this.props.history.push('/');
         
     }
    
@@ -49,6 +74,7 @@ import axios from 'axios';
                                 className="form-control" 
                                 name="name"
                                 value={this.state.name}
+                                onChange={this.onInputChange}
                                 required/>
                     </div>
                     <div className="form-group col-md-2">
@@ -58,6 +84,7 @@ import axios from 'axios';
                                 className="form-control" 
                                 name="rating"
                                 value={this.state.rating}
+                                onChange={this.onInputChange}
                                 required/>
                     </div>
                 </div>
@@ -69,6 +96,7 @@ import axios from 'axios';
                                 className="form-control" 
                                 name="imageURL"
                                 value={this.state.imageURL}
+                                onChange={this.onInputChange}
                                 required/>
                     </div>
                 </div>
@@ -78,7 +106,8 @@ import axios from 'axios';
                         <textarea 
                                 className="form-control" 
                                 name="overview"
-                                value={this.state.overwiev}
+                                value={this.state.overview}
+                                onChange={this.onInputChange}
                                  rows="5"></textarea>
                     </div>
                 </div>
